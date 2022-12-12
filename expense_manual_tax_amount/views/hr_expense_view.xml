@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="taxed_amount_inherit_ht_expense" model="ir.ui.view">
+        <field name="name">hr.expense.taxed.view.form.inherit</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
+        <field name="arch" type="xml">
+            <field name="total_amount" position="before">
+                <field name="force_tax_amount" />
+                <field name="manual_tax_amount"
+                    attrs="{'invisible': [('force_tax_amount', '=', False)]}" />
+            </field>
+            <field name="tax_ids" position="attributes">
+                <attribute name="attrs">{'invisible': [('force_tax_amount', '=', True)]}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
