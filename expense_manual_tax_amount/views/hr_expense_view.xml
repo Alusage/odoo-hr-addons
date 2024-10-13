@@ -5,7 +5,7 @@
         <field name="model">hr.expense</field>
         <field name="inherit_id" ref="hr_expense.hr_expense_view_form" />
         <field name="arch" type="xml">
-            <field name="total_amount" position="before">
+            <field name="unit_amount" position="before">
                 <field name="force_tax_amount" />
                 <field name="manual_tax_amount"
                     attrs="{'invisible': [('force_tax_amount', '=', False)]}" />
