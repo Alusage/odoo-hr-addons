@@ -13,16 +13,33 @@ class AnalyticAccountLine(models.Model):
     )
 
     def _prepare_timesheet(self, calendar_event):
+        project_id = False
+        task_id = False
         event_name = calendar_event.name[
             calendar_event.name.find("[") + 1 : calendar_event.name.find("]")
         ]
-        project_code, task_type = event_name.split("/")
-        project_id = self.env["project.project"].search(
-            [("analytic_account_id.code", "=", project_code)]
+        _logger.info(
+            "Calendar event name: %s (find: %s)" % (calendar_event.name, event_name)
         )
-        task_id = self.env["project.task"].search(
-            [("user_ids", "in", [self.env.user.id]), ("type_id.code", "=", task_type)]
-        )
+        if event_name:
+            try:
+                project_code, task_type = event_name.split("/")
+                project_id = self.env["project.project"].search(
+                    [("analytic_account_id.code", "=", project_code)]
+                )
+                task_id = self.env["project.task"].search(
+                    [
+                        ("project_id", "=", project_id.id),
+                        ("user_ids", "in", [self.env.user.id]),
+                        ("type_id.code", "=", task_type),
+                    ]
+                )
+            except Exception as e:
+                project_code = event_name
+                project_id = self.env["project.project"].search(
+                    [("analytic_account_id.code", "=", project_code)]
+                )
+
         return {
             "name": calendar_event.name,
             "unit_amount": calendar_event.duration,
