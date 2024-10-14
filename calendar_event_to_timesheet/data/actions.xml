@@ -1,0 +1,25 @@
+<odoo>
+    <!-- Action Serveur pour lancer la commande _create_timesheet -->
+    <record id="action_server_create_timesheet" model="ir.actions.server">
+        <field name="name">Import Timesheet</field>
+        <field name="model_id" ref="model_account_analytic_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            records._create_timesheets()
+        </field>
+    </record>
+
+    <!-- Ajouter un bouton dans la vue tree du modèle account.analytic.line -->
+    <record id="view_account_analytic_line_tree_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <header>
+                    <button name="%(calendar_event_to_timesheet.action_server_create_timesheet)d" string="Import timesheet" type="action" class="btn-primary"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo>
