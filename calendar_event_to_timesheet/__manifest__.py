@@ -9,7 +9,7 @@
     "category": "Human Resources",
     "depends": ["base", "calendar", "hr_timesheet", "project_type"],
     "data": [
-        #"views/hr_expense_view.xml",
+        "views/calendar_event_view.xml",
         "data/actions.xml",
     ],
     "installable": True,
