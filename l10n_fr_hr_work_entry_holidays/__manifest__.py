@@ -3,7 +3,7 @@
 
 {
     "name": "France - Work Entries Time Off",
-    "version": "17.0.1.0.1",
+    "version": "16.0.1.0.1",
     "countries": ["fr"],
     "summary": "Management of leaves for part-time workers in France",
     "depends": [
