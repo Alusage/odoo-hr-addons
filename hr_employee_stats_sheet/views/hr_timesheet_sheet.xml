@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="view_hr_timesheet_sheet_form_inherit" model="ir.ui.view">
+            <field name="name">hr.timesheet.sheet.form.inherit</field>
+            <field name="model">hr_timesheet.sheet</field>
+            <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+            <field name="arch" type="xml">
+                <field name="department_id" position="after">
+                    <field name="total_recovery_hours" widget="float_time"/>
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Employee Stats">
+                        <field name="employee_stats_ids" no_label="1" readonly="1"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
