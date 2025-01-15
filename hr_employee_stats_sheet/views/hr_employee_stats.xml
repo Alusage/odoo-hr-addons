@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_hr_employee_stats_tree" model="ir.ui.view">
+        <field name="name">hr.employee.stats.tree</field>
+        <field name="model">hr.employee.stats</field>
+        <field name="arch" type="xml">
+            <tree name="Employee time stats" editable="top" decoration-muted="dayofweek in [5,6]"> 
+                <field name="name"/>
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="total_hours_ht" widget="float_time" sum="Total"/>
+                <field name="total_hours_at" widget="float_time" sum="Total"/>
+                <field name="total_leave_hours" widget="float_time" sum="Total"/>
+                <field name="total_recovery_hours" widget="float_time" sum="Total"/>
+                <field name="total_planned_hours" widget="float_time" sum="Total"/>
+                <field name="gap_hours" widget="float_time" sum="Total"/>
+                <field name="total_transport_hours" widget="float_time" sum="Total"/>
+                <field name="computed_transport_hours" widget="float_time" sum="Total"/>
+                <field name="lunch_voucher" sum="Total"/>
+                <field name="dayofweek" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
