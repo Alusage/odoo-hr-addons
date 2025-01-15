@@ -13,7 +13,8 @@
         "hr_attendance",
         "hr_timesheet",
         "hr_timesheet_sheet",
-        "hr_leave_usability",
+        "allow_negative_leave_and_allocation",
+        #"hr_leave_usability",
     ],
     "data": [
         "views/hr_employee_stats.xml",
