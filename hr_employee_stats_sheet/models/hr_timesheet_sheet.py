@@ -37,6 +37,7 @@ class HrTimesheetSheet(models.Model):
                         )
         return True
 
+    @api.model
     def create(self, vals):
         res = super().create(vals)
         res.search_and_create_employee_stats()

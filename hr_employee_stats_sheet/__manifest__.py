@@ -1,6 +1,6 @@
 {
     "name": "hr_employee_stats_sheet",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "description": "Add global sheet for employee stats",
     "summary": "Add global sheet for employee stats",
     "author": "Nicolas JEUDY",
@@ -16,6 +16,7 @@
         "allow_negative_leave_and_allocation",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "views/hr_employee_stats.xml",
         "views/hr_attendance.xml",
         "views/hr_timesheet_sheet.xml",

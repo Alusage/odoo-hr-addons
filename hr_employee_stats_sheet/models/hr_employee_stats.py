@@ -26,7 +26,7 @@ class HrEmployeeStats(models.Model):
         default=lambda self: self.env.company,
         required=True,
     )
-    sheet_id = fields.Many2one("hr_timesheet_sheet.sheet", "Timesheet")
+    sheet_id = fields.Many2one("hr_timesheet.sheet", "Timesheet")
     total_hours_at = fields.Float(
         "Total Hours with transport", compute="_compute_hours"
     )
